@@ -1,14 +1,16 @@
 //
-//  FavoritesListVC.swift
+//  FollowerListVC.swift
 //  GitHubFollowers
 //
-//  Created by Adam Chomicki on 15/03/2023.
+//  Created by Adam Chomicki on 17/03/2023.
 //
 
 import UIKit
 
-class FavoritesListVC: UIViewController {
+class FollowerListVC: UIViewController {
 
+    var username: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -17,5 +19,6 @@ class FavoritesListVC: UIViewController {
         super.viewWillAppear(animated)
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 }

@@ -20,13 +20,13 @@ class GFTextField: UITextField {
     
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
-        
         layer.cornerRadius = 10
         layer.borderWidth = 2
         layer.borderColor = UIColor.systemGray4.cgColor
         
         textColor = .label  // black or white, depending on usage of light mode vs dark mode
         tintColor = .label
+        
         textAlignment = .center
         font = UIFont.preferredFont(forTextStyle: .title2)
         adjustsFontSizeToFitWidth = true
@@ -34,7 +34,8 @@ class GFTextField: UITextField {
         
         backgroundColor = .tertiarySystemBackground
         autocorrectionType = .no
-        
+        keyboardType = .default
+        returnKeyType = .go
         placeholder = "Enter your username"
     }
 }
