@@ -5,25 +5,25 @@
 //  Created by Adam Chomicki on 21/03/2023.
 //
 
-import Foundation
+import UIKit
 
 class NetworkManager {
     static let shared = NetworkManager()
-    let baseURL = "https://api.github.com/users/"
+    private let baseURL = "https://api.github.com/users/"
+    
+    let cache = NSCache<NSString, UIImage>()
     
     private init() {}
 
     func getFollower(for username: String, page: Int, completed: @escaping ([Follower]?, ErrorMessage?) -> Void) {    // returning [Follower] or error as String
         let endpoint = baseURL + "\(username)/followers?per_page=100&page=\(page)"
-        // let endpoint = baseURL + "\(username)/followers"
-        
         
         guard let url = URL(string: endpoint) else {
             completed(nil, ErrorMessage.invalidUsername)
             return
         }
         
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
             
             if let _ = error {
                 completed(nil, ErrorMessage.unableToComplete)
@@ -53,7 +53,6 @@ class NetworkManager {
                 
             } catch {
                 completed(nil, ErrorMessage.invalidData)
-                // completed(nil, "There is a problem with data.")
             }
         }
         
